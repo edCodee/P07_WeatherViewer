@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_padding">16dp</dimen>
+    <dimen name="list_item_padding">8dp</dimen>
+    <!-- PDF 7.4.7, paso 2 -->
+    <dimen name="image_side_length">50dp</dimen>
+</resources>

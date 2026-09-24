@@ -2,4 +2,9 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- PDF 7.4.4: primario de la plantilla Blank Activity (Indigo 500) -->
+    <color name="brand_indigo">#3F51B5</color>
+    <!-- PDF 7.4.4: colorAccent cambiado a Blue A200 -->
+    <color name="brand_blue_accent">#448AFF</color>
 </resources>

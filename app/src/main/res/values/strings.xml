@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">WeatherViewer</string>
+    <string name="app_name">Weather Viewer</string>
+
+    <!-- Busqueda -->
+    <string name="hint_text">Enter city (e.g., Boston, MA, US)</string>
+    <string name="get_forecast">Get forecast</string>
+    <string name="empty_state">Enter a city to see its 5-day forecast</string>
+
+    <!-- PDF Fig. 7.4: formato de cada fila -->
+    <string name="day_description">%1$s: %2$s</string>
+    <string name="low_temp">Low: %s</string>
+    <string name="high_temp">High: %s</string>
+    <string name="humidity">Humidity: %s</string>
+
+    <!-- Un mensaje por cada ForecastResult.Failure (incompatibilidad #17) -->
+    <string name="error_empty_query">Enter a city first</string>
+    <string name="error_city_not_found">City not found</string>
+    <string name="error_unauthorized">OpenWeatherMap rejected the API key or the plan has no access</string>
+    <!-- Texto de connect_error del PDF -->
+    <string name="error_no_connection">Unable to connect to OpenWeatherMap.org</string>
+    <string name="error_service_unavailable">OpenWeatherMap is not available right now. Try again later</string>
+    <!-- Texto de read_error del PDF -->
+    <string name="error_unexpected_response">Unable to read weather data</string>
 </resources>
