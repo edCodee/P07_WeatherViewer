@@ -64,6 +64,10 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.material)
 
+    implementation(libs.kotlinx.coroutines.core)
+// ...
+    testImplementation(libs.mockwebserver)
+
     testImplementation(libs.junit)
     testImplementation(libs.org.json)
     testImplementation(libs.kotlinx.coroutines.test)
