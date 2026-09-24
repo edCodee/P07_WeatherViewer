@@ -16,6 +16,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.WeatherViewer">
+        <!-- Sin screenOrientation, a diferencia del PDF (7.4.2): el estado sobrevive a la rotacion (ViewModel) y API 36 ignoraria el bloqueo en pantallas >= 600dp -->
         <activity
             android:name=".ui.forecast.MainActivity"
             android:exported="true"
