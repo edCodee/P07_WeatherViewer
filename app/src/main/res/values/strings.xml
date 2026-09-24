@@ -22,4 +22,7 @@
     <string name="error_service_unavailable">OpenWeatherMap is not available right now. Try again later</string>
     <!-- Texto de read_error del PDF -->
     <string name="error_unexpected_response">Unable to read weather data</string>
+
+    <!-- Etiqueta de la Toolbar para ciudad y país -->
+    <string name="location_label">%1$s, %2$s</string>
 </resources>
