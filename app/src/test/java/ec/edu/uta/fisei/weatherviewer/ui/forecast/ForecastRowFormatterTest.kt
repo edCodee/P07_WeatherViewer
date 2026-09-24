@@ -67,4 +67,15 @@ class ForecastRowFormatterTest {
         val francia = ForecastRowFormatter(Locale.FRANCE)
         assertNotEquals(us.humidity(65), francia.humidity(65))
     }
+    @Test
+    fun `con preferencia Fahrenheit convierte y cambia la unidad`() {
+        // 11.47 °C = 52.65 °F
+        assertEquals("53°F", ForecastRowFormatter(Locale.US, fahrenheit = true).temperature(11.47))
+    }
+
+    @Test
+    fun `en Fahrenheit tampoco aparece menos cero`() {
+        // -17.9 °C = -0.22 °F
+        assertEquals("0°F", ForecastRowFormatter(Locale.US, fahrenheit = true).temperature(-17.9))
+    }
 }

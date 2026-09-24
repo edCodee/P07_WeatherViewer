@@ -13,10 +13,11 @@
     <ImageView
         android:id="@+id/conditionImageView"
         android:layout_width="@dimen/image_side_length"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/image_side_length"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/icon_background"
         android:importantForAccessibility="no"
-        android:scaleType="fitCenter"
-        tools:background="?attr/colorSecondaryContainer" />
+        android:scaleType="fitCenter" />
 
     <!-- PDF 7.4.7 paso 3: 3 columnas x 2 filas, ocupa el resto del ancho -->
     <GridLayout

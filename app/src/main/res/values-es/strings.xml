@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_text">Ciudad (ej.: Quito, EC)</string>
+    <string name="get_forecast">Consultar pronóstico</string>
+    <string name="empty_state">Ingresa una ciudad para ver su pronóstico</string>
+
+    <string name="low_temp">Mín.: %s</string>
+    <string name="high_temp">Máx.: %s</string>
+    <string name="humidity">Humedad: %s</string>
+
+    <string name="error_empty_query">Primero ingresa una ciudad</string>
+    <string name="error_city_not_found">No se encontró la ciudad</string>
+    <string name="error_unauthorized">OpenWeatherMap rechazó la API key o el plan no tiene acceso</string>
+    <string name="error_no_connection">No se pudo conectar con OpenWeatherMap.org</string>
+    <string name="error_service_unavailable">OpenWeatherMap no está disponible ahora. Intenta más tarde</string>
+    <string name="error_unexpected_response">No se pudieron leer los datos del clima</string>
+</resources>

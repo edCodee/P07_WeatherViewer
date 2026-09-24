@@ -50,4 +50,19 @@ class OwmUrlsTest {
     fun `el icono se pide por https en tamano 2x`() {
         assertEquals("https://openweathermap.org/img/wn/04d@2x.png", urls.icon("04d"))
     }
+    @Test
+    fun `forecast pide las descripciones en el idioma indicado`() {
+        val espanol = OwmUrls(apiKey = "clave-de-prueba", language = { "es" })
+        assertTrue(espanol.forecast(0.0, 0.0).contains("&lang=es&"))
+    }
+
+    @Test
+    fun `el idioma se lee en cada llamada, no una sola vez`() {
+        var idioma = "es"
+        val urls = OwmUrls(apiKey = "clave-de-prueba", language = { idioma })
+
+        assertTrue(urls.forecast(0.0, 0.0).contains("&lang=es&"))
+        idioma = "en"   // el usuario cambio el idioma del telefono
+        assertTrue(urls.forecast(0.0, 0.0).contains("&lang=en&"))
+    }
 }

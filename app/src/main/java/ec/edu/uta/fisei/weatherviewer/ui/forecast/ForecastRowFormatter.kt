@@ -14,8 +14,11 @@ import kotlin.math.roundToInt
  * la Activity se recrea y se construye un formatter nuevo.
  * SimpleDateFormat no es thread-safe: usar solo desde el hilo principal.
  */
-class ForecastRowFormatter(private val locale: Locale = Locale.getDefault()) {
-
+class ForecastRowFormatter(
+    private val locale: Locale = Locale.getDefault(),
+    /** Lo decide el sistema (preferencia regional); el formatter solo convierte. */
+    private val fahrenheit: Boolean = false
+) {
     // UTC a proposito: epochDay YA es el dia local de la ciudad (Fase 2).
     // Aplicar la zona del telefono encima repetiria el bug #12 del PDF.
     private val nombreDelDia = SimpleDateFormat("EEEE", locale).apply {
@@ -29,8 +32,9 @@ class ForecastRowFormatter(private val locale: Locale = Locale.getDefault()) {
             .replaceFirstChar { it.titlecase(locale) }
 
     /** Redondea ANTES de formatear: evita el "-0" y el HALF_EVEN de NumberFormat. */
-    fun temperature(celsius: Double): String = "${entero.format(celsius.roundToInt())}°C"
-
+    fun temperature(celsius: Double): String =
+        if (fahrenheit) "${entero.format((celsius * 9 / 5 + 32).roundToInt())}°F"
+        else "${entero.format(celsius.roundToInt())}°C"
     fun humidity(percent: Int): String = porcentaje.format(percent / 100.0)
 
     private companion object {

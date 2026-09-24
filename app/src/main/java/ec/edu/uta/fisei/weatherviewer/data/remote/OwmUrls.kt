@@ -1,6 +1,7 @@
 package ec.edu.uta.fisei.weatherviewer.data.remote
 
 import java.net.URLEncoder
+import java.util.Locale
 
 /**
  * Arma las URLs del API. baseUrl es inyectable para que los tests apunten
@@ -8,7 +9,9 @@ import java.net.URLEncoder
  */
 class OwmUrls(
     private val apiKey: String,
-    private val baseUrl: String = "https://api.openweathermap.org"
+    private val baseUrl: String = "https://api.openweathermap.org",
+    /** Funcion, no valor: se evalua en cada llamada (el usuario puede cambiar de idioma). */
+    private val language: () -> String = { Locale.getDefault().language }
 ) {
 
     fun geocoding(query: String): String =
@@ -20,7 +23,8 @@ class OwmUrls(
      * del locale es-EC y romperia la URL.
      */
     fun forecast(latitude: Double, longitude: Double): String =
-        "$baseUrl/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&appid=$apiKey"
+        "$baseUrl/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric" +
+                "&lang=${language()}&appid=$apiKey"
 
 
     /** https: el http del PDF esta bloqueado por defecto desde API 28 (incompatibilidad #10). */

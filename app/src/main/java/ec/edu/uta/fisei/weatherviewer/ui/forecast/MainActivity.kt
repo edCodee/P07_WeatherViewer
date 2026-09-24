@@ -25,6 +25,7 @@ import ec.edu.uta.fisei.weatherviewer.core.ImageLoader
 import ec.edu.uta.fisei.weatherviewer.databinding.ActivityMainBinding
 import ec.edu.uta.fisei.weatherviewer.domain.model.DailyForecast
 import kotlinx.coroutines.launch
+import androidx.core.text.util.LocalePreferences
 
 class MainActivity : AppCompatActivity() {
 
@@ -62,7 +63,16 @@ class MainActivity : AppCompatActivity() {
             download = { url -> descargar(url) },
             show = { imageView, bitmap -> imageView.setImageBitmap(bitmap) }
         )
-        adapter = WeatherArrayAdapter(this, ForecastRowFormatter(), iconLoader, container.urls::icon)
+
+        val usarFahrenheit = LocalePreferences.getTemperatureUnit() == LocalePreferences.TemperatureUnit.FAHRENHEIT
+
+        adapter = WeatherArrayAdapter(
+            this,
+            ForecastRowFormatter(fahrenheit = usarFahrenheit),
+            iconLoader,
+            container.urls::icon
+        )
+
         binding.weatherListView.adapter = adapter
         binding.weatherListView.emptyView = binding.emptyTextView
     }
