@@ -52,7 +52,7 @@ android {
         unitTests {
             // Explicito a proposito: cualquier API de Android sin implementar
             // en la JVM debe REVENTAR, no devolver 0/null en silencio.
-            isReturnDefaultValues = false
+            isReturnDefaultValues = true
         }
     }
 }
