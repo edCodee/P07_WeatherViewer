@@ -9,8 +9,8 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertThrows
 import org.junit.Before
 import org.junit.Test
-import  okio.buffer
 import org.junit.Assert.assertArrayEquals
+import okio.Buffer
 
 class HttpJsonFetcherTest {
 

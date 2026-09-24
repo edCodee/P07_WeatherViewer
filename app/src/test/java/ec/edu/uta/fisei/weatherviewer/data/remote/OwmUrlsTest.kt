@@ -4,6 +4,7 @@ import org.junit.After
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import java.util.Locale
+import org.junit.Assert.assertEquals
 
 class OwmUrlsTest {
 

@@ -24,8 +24,7 @@ class ImageLoader<T : Any, I : Any>(
 
     fun load(target: T, url: String) {
         // 1. El destino se recicla: lo que estuviera bajando para el ya no sirve
-        enCurso.remove(target)?.cancel()
-
+        enCurso.remove(target) // ?.cancel()
         // 2. Del cache: al instante, sin parpadeo
         cache[url]?.let { imagen ->
             show(target, imagen)
