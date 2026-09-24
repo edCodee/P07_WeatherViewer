@@ -62,7 +62,9 @@ class ForecastRowFormatterTest {
 
     @Test
     fun `la humedad respeta el locale`() {
-        val ecuador = ForecastRowFormatter(Locale.forLanguageTag("es-EC"))
-        assertNotEquals(us.humidity(65), ecuador.humidity(65))
+        // El frances SIEMPRE separa el % con espacio ("65 %").
+        // es-EC no sirve de ejemplo: en CLDR escribe "65%" igual que el ingles.
+        val francia = ForecastRowFormatter(Locale.FRANCE)
+        assertNotEquals(us.humidity(65), francia.humidity(65))
     }
 }

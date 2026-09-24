@@ -3,6 +3,9 @@ package ec.edu.uta.fisei.weatherviewer.core
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+
+
 
 /**
  * Carga imagenes en destinos que se RECICLAN (filas de un ListView).
@@ -13,6 +16,8 @@ import kotlinx.coroutines.launch
  * Generico en T (destino) e I (imagen) para probar la logica en la JVM,
  * sin ImageView ni Bitmap. Debe usarse desde el hilo principal.
  */
+
+@OptIn(ExperimentalCoroutinesApi::class)
 class ImageLoader<T : Any, I : Any>(
     private val scope: CoroutineScope,
     private val cache: IconCache<I>,
@@ -24,7 +29,8 @@ class ImageLoader<T : Any, I : Any>(
 
     fun load(target: T, url: String) {
         // 1. El destino se recicla: lo que estuviera bajando para el ya no sirve
-        enCurso.remove(target) // ?.cancel()
+        enCurso.remove(target)?.cancel()
+
         // 2. Del cache: al instante, sin parpadeo
         cache[url]?.let { imagen ->
             show(target, imagen)
