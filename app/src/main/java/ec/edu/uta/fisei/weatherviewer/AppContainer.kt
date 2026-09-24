@@ -8,14 +8,26 @@ import ec.edu.uta.fisei.weatherviewer.domain.usecase.GetDailyForecastUseCase
 
 /**
  * Punto de composicion: el UNICO lugar donde se unen las capas.
- * La Fase 9 lo reemplazara por uno con repositorios falsos para Espresso.
+ * Recibe sus piezas por constructor para que las pruebas instrumentadas
+ * puedan armar uno con repositorios falsos.
  */
-class AppContainer(apiKey: String) {
-    val fetcher = HttpJsonFetcher()
-    val urls = OwmUrls(apiKey)
-
-    val getDailyForecast = GetDailyForecastUseCase(
-        OwmGeocodingRepository(fetcher, urls),
-        OwmForecastRepository(fetcher, urls)
-    )
+class AppContainer(
+    val fetcher: HttpJsonFetcher,
+    val urls: OwmUrls,
+    val getDailyForecast: GetDailyForecastUseCase
+) {
+    companion object {
+        fun production(apiKey: String): AppContainer {
+            val fetcher = HttpJsonFetcher()
+            val urls = OwmUrls(apiKey)
+            return AppContainer(
+                fetcher = fetcher,
+                urls = urls,
+                getDailyForecast = GetDailyForecastUseCase(
+                    OwmGeocodingRepository(fetcher, urls),
+                    OwmForecastRepository(fetcher, urls)
+                )
+            )
+        }
+    }
 }
