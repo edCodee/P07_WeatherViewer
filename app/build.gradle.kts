@@ -52,7 +52,7 @@ android {
         unitTests {
             // Explicito a proposito: cualquier API de Android sin implementar
             // en la JVM debe REVENTAR, no devolver 0/null en silencio.
-            isReturnDefaultValues = true
+            isReturnDefaultValues = false
         }
     }
 }
@@ -65,7 +65,7 @@ dependencies {
     implementation(libs.material)
 
     testImplementation(libs.junit)
-    // testImplementation(libs.org.json)   <- se activa en el paso 1.6
+    testImplementation(libs.org.json)
 
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
