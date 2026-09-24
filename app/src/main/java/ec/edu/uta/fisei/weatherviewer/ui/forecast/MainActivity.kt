@@ -50,6 +50,8 @@ class MainActivity : AppCompatActivity() {
         configurarBusqueda()
         aplicarInsets()
         observarEstado()
+        // PDF Fig. 7.2: foco y teclado al abrir, pero NO al rotar ni al cambiar de tema
+        if (savedInstanceState == null) mostrarTecladoInicial()
     }
 
     private fun configurarLista() {
@@ -124,5 +126,11 @@ class MainActivity : AppCompatActivity() {
             binding.weatherListView.updatePadding(bottom = maxOf(barras.bottom, teclado.bottom))
             insets
         }
+    }
+
+    private fun mostrarTecladoInicial() {
+        binding.locationEditText.requestFocus()
+        WindowCompat.getInsetsController(window, binding.locationEditText)
+            .show(WindowInsetsCompat.Type.ime())
     }
 }
