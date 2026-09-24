@@ -44,4 +44,9 @@ class OwmUrlsTest {
     fun `forecast pide unidades metricas`() {
         assertTrue(urls.forecast(0.0, 0.0).contains("units=metric"))
     }
+
+    @Test
+    fun `el icono se pide por https en tamano 2x`() {
+        assertEquals("https://openweathermap.org/img/wn/04d@2x.png", urls.icon("04d"))
+    }
 }

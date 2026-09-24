@@ -21,4 +21,8 @@ class OwmUrls(
      */
     fun forecast(latitude: Double, longitude: Double): String =
         "$baseUrl/data/2.5/forecast?lat=$latitude&lon=$longitude&units=metric&appid=$apiKey"
+
+
+    /** https: el http del PDF esta bloqueado por defecto desde API 28 (incompatibilidad #10). */
+    fun icon(iconCode: String): String = "https://openweathermap.org/img/wn/$iconCode@2x.png"
 }
